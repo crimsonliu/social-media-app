@@ -6,6 +6,7 @@ import { AuthContext } from "../context/auth";
 import LikeButton from "./LikeButton.js";
 import DeleteButton from "./DeleteButton.js";
 import MyPopup from "../util/MyPopup";
+import EditButton from "./EditButton.js";
 
 function PostCard({
   post: { body, createdAt, id, username, likes, likesCount, commentsCount },
@@ -39,8 +40,12 @@ function PostCard({
             </Label>
           </Button>
         </MyPopup>
-
-        {user && user.username === username && <DeleteButton postId={id} />}
+        <div style={{ margin: 10 }}>
+          {user && user.username === username && (
+            <EditButton postId={id} body={body} />
+          )}
+          {user && user.username === username && <DeleteButton postId={id} />}
+        </div>
       </Card.Content>
     </Card>
   );

@@ -42,6 +42,17 @@ module.exports = {
       return post;
     },
 
+    async editPost(_, { postId, body }, context) {
+      const post = await Post.findById(postId);
+      post.body = body;
+      try {
+        await post.save();
+        return post;
+      } catch (err) {
+        throw new Error(err);
+      }
+    },
+
     async deletePost(parent, { postId }, context) {
       const user = checkAuth(context);
       try {

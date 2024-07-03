@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import gql from "graphql-tag";
 
 import { useMutation } from "@apollo/client";
-import { Button, Icon, Confirm, Popup } from "semantic-ui-react";
+import { Button, Icon, Confirm } from "semantic-ui-react";
 
 import { FETCH_POSTS_QUERY } from "../util/graphql";
 import MyPopup from "../util/MyPopup";
@@ -37,6 +37,7 @@ function DeleteButton({ postId, commentId, callback }) {
       commentId,
     },
   });
+
   return (
     <div>
       <MyPopup content={commentId ? "delete comment" : "delete post"}>

@@ -43,3 +43,24 @@ export const CREATE_POST_MUTATION = gql`
     }
   }
 `;
+
+export const EDIT_POST_MUTATION = gql`
+  mutation ($postId: ID!, $body: String!) {
+    editPost(postId: $postId, body: $body) {
+      id
+      body
+      createdAt
+      username
+      comments {
+        id
+        username
+        body
+      }
+      likes {
+        id
+        username
+        createdAt
+      }
+    }
+  }
+`;
